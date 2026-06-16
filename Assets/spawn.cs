@@ -6,6 +6,7 @@ public class spawn : MonoBehaviour
 {
     Rigidbody2D rb;
     public GameObject gun;
+    public GameObject bomb;
     void Start()
     {
         rb = gun.GetComponent<Rigidbody2D>();
@@ -21,8 +22,20 @@ public class spawn : MonoBehaviour
     }
     void Spawn()
     {
+        int a = Random.Range(1, 11);
+        if(a == 10)
+        {
+            Bomb();
+            return;
+        }
         Vector3 pos = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
         GameObject gunn = Instantiate(gun, pos,Quaternion.identity);
-        Destroy(gunn, 10f);
+        Destroy(gunn, 5f);
+    }
+    void Bomb()
+    {
+        Vector3 pos = new Vector3(Random.Range(-3f, 3f), Random.Range(-3f, 3f), 0);
+        GameObject gunn = Instantiate(bomb, pos, Quaternion.identity);
+        Destroy(gunn, 5f);
     }
 }

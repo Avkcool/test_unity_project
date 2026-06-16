@@ -18,13 +18,11 @@ public class col : MonoBehaviour
         //rb.transform.position += Vector3.MoveTowards(rb.tranform.position, pos, 0.1f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-           
-            Debug.Log("Вы выиграли");
-            Destroy(gameObject);
-        }
-    }
+   // private void OnTriggerEnter2D(Collider2D collision)
+    //{
+      //  if (collision.CompareTag("Player"))
+       // {
+        //    Destroy(gameObject);
+        //}
+    //}
 }
