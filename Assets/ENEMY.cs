@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ENEMY : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject player;
     Rigidbody2D rb;
+    public AudioSource death;
     Rigidbody2D rbb;
     // Start is called before the first frame update
     void Start()
     {
         rb = enemy.GetComponent<Rigidbody2D>();
         rbb = player.GetComponent<Rigidbody2D>();
+        death = enemy.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,8 +27,10 @@ public class ENEMY : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            death.Play();
             Debug.Log("Вы проиграли");
             Destroy(collision.gameObject);
+            SceneManager.LoadScene(0);
         }
     }
 }
